@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState, useContext } from 'react'
-import listaDeCanciones from '../../assets/listaCanciones.json'
+import listaDeCanciones from '../assets/listaCanciones.json'
 // CONTEXT tiene que ver con el manejo de estados globales en React, es decir, poder compartir LA MISMA información entre varios componentes sin tener que pasarla por props.
 
 // Para usar CONTEXT necesitamos seguir una serie de pasos.
@@ -52,3 +52,6 @@ export {
 /* USO DE CONTEXT */
 
 // #5 Debemos de ir a un componente superior y envolverlo con el provider. A partir de ese componente para abajo estaran disponibles los datos del contexto.
+
+// #6 Entrar a un componente y consumir el contexto (ejemplo: SongList).
+// En este caso vamos a usar useSongContext
