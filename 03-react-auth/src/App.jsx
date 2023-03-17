@@ -1,12 +1,15 @@
 import './App.css'
+import { BrowserRouter } from 'react-router-dom'
 import { Header } from '@/components/Header'
-// import { Dashboard, Home, Login, Signup, Secret } from './pages'
+import RoutesIndex from '@/routes/Index'
 
 function App () {
   return (
     <div>
-      <Header />
-      <h1> React Auth </h1>
+      <BrowserRouter>
+        <Header />
+        <RoutesIndex />
+      </BrowserRouter>
     </div>
   )
 }
