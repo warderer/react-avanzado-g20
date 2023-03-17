@@ -1,5 +1,5 @@
 import './App.css'
-import { Header } from './components/Header'
+import { Header } from '@/components/Header'
 // import { Dashboard, Home, Login, Signup, Secret } from './pages'
 
 function App () {
