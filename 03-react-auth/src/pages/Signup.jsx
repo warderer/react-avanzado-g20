@@ -1,10 +1,18 @@
 import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 import useForm from '@/hooks/useForm'
+import { registerUserService } from '@/services/userServices'
 
 const Signup = () => {
-  const sendData = (data) => {
-    console.log(data)
+  const sendData = async (data) => {
+    try {
+      const response = await registerUserService(data)
+      if (response.status === 201) {
+        console.log('User created successfully')
+      }
+    } catch (error) {
+      console.log('Ocurrio un error en Signup:', error.message)
+    }
   }
 
   const { input, handleInputChange, handleSubmit } = useForm(sendData, {
@@ -88,7 +96,7 @@ const Signup = () => {
           <label htmlFor='password'>Password</label>
         </div>
 
-        <button className='w-100 btn btn-lg btn-primary' type='submit'>Sign in</button>
+        <button className='w-100 btn btn-lg btn-primary' type='submit'>Sign up</button>
         <p className='mt-5 mb-3 text-muted'>© 2017–2022</p>
       </form>
     </main>
