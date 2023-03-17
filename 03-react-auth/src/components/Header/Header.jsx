@@ -1,25 +1,54 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './Header.scss'
 
+// Documentación NavLink https://reactrouter.com/en/main/components/nav-link
+// NavLink es un tipo especial de Link, que me permite gestionar estilos en función si la ruta está activa o no (isActive) o si esta esta cargando (isPending).
+
 const Header = () => {
+  const linkIsActive = (isActive, isPending) => {
+    if (isPending) return 'header__item-link'
+    if (isActive) return 'header__item-link header__item-link--is-active'
+    else return 'header__item-link'
+  }
+
   return (
     <nav className='header'>
-      <Link to='/' className='header__logo'>LOGO</Link>
+      <NavLink to='/' className='header__logo'>LOGO</NavLink>
       <ul className='header__nav-list'>
         <li className='header__list-item'>
-          <Link to='/' className='header__item-link header__item-link--is-active'>Home</Link>
+          <NavLink
+            to='/'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >Home
+          </NavLink>
         </li>
         <li className='header__list-item'>
-          <Link to='/dashboard' className='header__item-link'>Dashboard</Link>
+          <NavLink
+            to='/dashboard'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >Dashboard
+          </NavLink>
         </li>
         <li className='header__list-item'>
-          <Link to='/secret' className='header__item-link'>Secret</Link>
+          <NavLink
+            to='/secret'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >Secret
+          </NavLink>
         </li>
         <li className='header__list-item'>
-          <Link to='/login' className='header__item-link'>Login</Link>
+          <NavLink
+            to='/login'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >Login
+          </NavLink>
         </li>
         <li className='header__list-item'>
-          <Link to='/signup' className='header__item-link'>Signup</Link>
+          <NavLink
+            to='/signup'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >Signup
+          </NavLink>
         </li>
       </ul>
     </nav>
