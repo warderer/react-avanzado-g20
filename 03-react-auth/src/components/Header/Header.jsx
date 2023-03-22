@@ -47,7 +47,7 @@ const Header = () => {
               <li className='header__list-item'>
                 <NavLink
                   to='/'
-                  className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+                  className='header__item-link'
                   onClick={logout}
                 >Logout
                 </NavLink>
