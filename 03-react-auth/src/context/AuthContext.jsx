@@ -9,12 +9,14 @@ const AuthProvider = (props) => {
   const [isAuth, setIsAuth] = useState(false) // ¿Estoy autenticado?
   const [userPayload, setUserPayload] = useState(null) // JWT payload decodificado
   const login = (token) => {
-    // Guardar el token en el local storage
-    window.localStorage.setItem('token', token)
-    // Decodificar el token
-    const decoded = jwt_decode(token)
-    setUserPayload(decoded)
-    setIsAuth(true)
+    if (token) {
+      // Guardar el token en el local storage
+      window.localStorage.setItem('token', token)
+      // Decodificar el token
+      const decoded = jwt_decode(token)
+      setUserPayload(decoded)
+      setIsAuth(true)
+    }
   }
 
   const logout = () => {
