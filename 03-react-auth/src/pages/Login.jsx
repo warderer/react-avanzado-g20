@@ -1,3 +1,4 @@
+import { useAuthContext } from '@/context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import useForm from '@/hooks/useForm'
 import { loginUserService } from '@/services/userServices'
@@ -5,13 +6,13 @@ import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 
 const Login = () => {
+  const { login } = useAuthContext()
   const navigate = useNavigate()
   const sendData = async (data) => {
     try {
       const response = await loginUserService(data)
       if (response.status === 200) {
-        // Guardar el token en el local storage
-        window.localStorage.setItem('token', response.data.token)
+        login(response.data.token)
         navigate('/')
       }
     } catch (error) {
