@@ -19,6 +19,7 @@ $menu-color: #3d3d3d;
 
     &__nav-list {
         display: flex;
+        flex-wrap: wrap;
         list-style: none;
         column-gap: 20px;
     }
