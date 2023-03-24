@@ -13,7 +13,7 @@ const Login = () => {
       const response = await loginUserService(data)
       if (response.status === 200) {
         login(response.data.token)
-        navigate('/')
+        navigate('/dashboard')
       }
     } catch (error) {
       console.log('Ocurrio un error en Login:', error.message)
