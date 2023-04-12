@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
 import useForm from '../hooks/useForm'
 import logo from '../assets/react.svg'
 
 const FormHook = () => {
-  // Paso 1: Crear un unico estado con toda la información en forma de objeto.
-  const [datos, setDatos] = useState({
+  // Paso 1: Voy a inicializar los datos del formulario con un objeto
+  const datos = {
     nombre: '',
     apellido: '',
     edad: 0,
@@ -12,37 +11,24 @@ const FormHook = () => {
     email: '',
     password: '',
     otro: ''
-  })
+  }
 
-  // Paso 2: Voy a simular traer datos de una API y prellenar el formulario con esos datos.
-  useEffect(() => {
-    setTimeout(() => {
-      const info = {
-        nombre: 'Juan',
-        apellido: 'Perez',
-        edad: 25,
-        genero: 'M',
-        email: 'juanperez@gmail.com',
-        password: 'gatito123',
-        otro: 'Otro'
-      }
-      setDatos(info)
-    }, 5000)
-  }, [])
-
-  // Paso 3: Voy a crear la función que se va a ejecutar cuando haga clic en el botón de enviar.
+  // Paso 2: Voy a crear la función que se va a ejecutar cuando haga clic en el botón de enviar.
   const sendData = (data) => {
     console.log('Datos enviados: ', data)
   }
 
-  // Paso 4: Ahora si, usar nuestro custom hook para manejar el formulario.
+  // Paso 3: Ahora si, usar nuestro custom hook para manejar el formulario.
   const { input, handleInputChange, handleSubmit } = useForm(sendData, datos)
 
   return (
     <div className='login'>
       <div className='login-container'>
         <img src={logo} alt='logo' />
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: 'flex', flexDirection: 'column' }}
+        >
           <label htmlFor='nombre'>Nombre</label>
           <input type='text' name='nombre' placeholder='Tu nombre' id='nombre' value={input.nombre} onChange={handleInputChange} />
 

@@ -5,6 +5,7 @@ import SimpleForm from './components/SimpleForm'
 function App () {
   return (
     <>
+      <SimpleForm />
       <FormHook />
     </>
   )

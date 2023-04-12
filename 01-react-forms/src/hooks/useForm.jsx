@@ -5,7 +5,7 @@
 // 3. Siempre debe de usar al menos un hook de React (useState, useEffect, useContext, useRef, etc.)
 // 4. Deben ser REUTILIZABLES, no para casos muy especificos.
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 function useForm (callback, defaults) {
   // Estado único para guardar los datos de mi formulario en un objeto
@@ -13,9 +13,9 @@ function useForm (callback, defaults) {
 
   // Cargar valores por defecto
   // useEffect se utiliza para manejar efectos secundarios en los componentes de React (manejar APIS)
-  useEffect(() => {
-    setInput({ ...defaults })
-  }, [])
+  // useEffect(() => {
+  //   setInput({ ...defaults })
+  // }, [])
 
   // Función que se ejecuta cada vez que haya un cambio en el input
   const handleInputChange = (event) => {
