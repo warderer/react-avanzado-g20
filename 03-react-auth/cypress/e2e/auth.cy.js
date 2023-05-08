@@ -16,10 +16,10 @@ describe('Mis primeros test', () => {
     cy.visit('/login')
 
     // 02. Ejecutar la acción / acciónes
-    cy.get('#floatingInput').type('drstrange@marvel.com')
-    cy.get('#floatingPassword').type('multiverso')
-    cy.get('button[type=submit]').click()
+    const email = 'drstrange@marvel.com'
+    const password = 'multiverso'
 
+    cy.doLogin(email, password)
     cy.wait('@loginApi')
 
     cy.get('h1')
@@ -34,12 +34,13 @@ describe('Mis primeros test', () => {
     cy.visit('/login')
 
     // 02. Ejecutar la acción / acciónes
-    cy.get('#floatingInput').type('superman@dc.com')
-    cy.get('#floatingPassword').type('superman')
-    cy.get('button[type=submit]').click()
+    const email = 'superman@dc.com'
+    const password = 'superman'
+
+    // Cypress Commands son funciones que se pueden reutilizar en cualquier parte del test
+    cy.doLogin(email, password)
 
     cy.wait('@loginApi')
-
     cy.get('nav > ul li:last').click()
 
     // 03. Hacer una aserción
